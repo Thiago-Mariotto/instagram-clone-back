@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import uploadFileService from "../services/uploadFile";
+import uploadFileService from "../services/fileService";
 
 export const uploadFileController = async (req: Request, res: Response, next: NextFunction) => {
 	try {
