@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS instagram;
+
+USE instagram;
+
+CREATE TABLE users (
+	user_id INTEGER PRIMARY KEY,
+	email VARCHAR(30) NOT NULL,
+	username VARCHAR(25) NOT NULL,
+	password VARCHAR(20) NOT NULL,
+);
+
+CREATE TABLE profile (
+	profile_id INTEGER PRIMARY KEY,
+	user_id INTEGER NOT NULL,
+	description VARCHAR(255) NOT NULL,
+	country VARCHAR(255) NOT NULL,
+
+	FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+);
+
+CREATE TABLE users_galery (
+	photo_id INTEGER PRIMARY KEY,
+	user_id INTEGER NOT NULL,
+	photo_url VARCHAR(255) NOT NULL,
+	on_received DATE NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE,
+);
