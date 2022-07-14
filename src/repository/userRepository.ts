@@ -1,8 +1,8 @@
-import { ResultSetHeader } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import connection from '../config/connectionDb';
 import { User } from '../entities/userEntity';
 
-export const createUser = async (user: User): Promise<number> => {
+export const register = async (user: User): Promise<number> => {
 	try {
 		const { id, name, username, email, password, updatedAt, createdAt } = user;
 		const query = 'INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -14,3 +14,14 @@ export const createUser = async (user: User): Promise<number> => {
 		throw new Error('service unavailable')
 	}
 };
+
+export const getUser = async (id: string): Promise<User> => {
+	try {
+		const query = 'SELECT * FROM users WHERE id = ?';
+		const [result] = await connection.execute<RowDataPacket[]>(query, [id]);
+
+		return result[0] as User;
+	} catch (error) {
+		throw new Error('service unavailable')
+	}
+}
