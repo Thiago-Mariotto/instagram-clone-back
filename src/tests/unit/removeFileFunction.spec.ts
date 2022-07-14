@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import fs from 'fs';
 import configPaths from '../../config/paths';
-import removeTempFile from '../../utils/deleteTmpFile';
+import removeTempFile from '../../utils/removeFile';
 
 const tempFolderPath = configPaths.tempUploadFolder;
 const correctFilename = 'tempFile.txt';
