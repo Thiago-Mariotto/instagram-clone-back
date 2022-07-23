@@ -8,7 +8,7 @@ export const createUserController = async (req: Request, res: Response, next: Ne
 
 		return res.status(201).json(newUser);
 	} catch (error) {
-		console.log("🚀 ~ file: userController.ts ~ line 15 ~ createUserController ~ error", error)
+		console.log("🚀 ~ file: userController.ts - createUserController: ", error)
 		next(error);
 	}
 }
